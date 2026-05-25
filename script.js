@@ -25,17 +25,17 @@ function launchConfetti() {
   }
 }
 
-function playBell(frequency, startTime, duration = 0.9) {
+function playBell(frequency, startTime, duration = 0.42, volume = 0.13, type = 'triangle') {
   const oscillator = audioContext.createOscillator();
   const gain = audioContext.createGain();
   const pan = audioContext.createStereoPanner();
 
-  oscillator.type = 'sine';
+  oscillator.type = type;
   oscillator.frequency.setValueAtTime(frequency, startTime);
-  pan.pan.setValueAtTime((Math.random() - 0.5) * 0.45, startTime);
+  pan.pan.setValueAtTime((Math.random() - 0.5) * 0.55, startTime);
 
   gain.gain.setValueAtTime(0, startTime);
-  gain.gain.linearRampToValueAtTime(0.12, startTime + 0.03);
+  gain.gain.linearRampToValueAtTime(volume, startTime + 0.02);
   gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
 
   oscillator.connect(gain);
@@ -78,10 +78,20 @@ function playMusicLoop() {
   if (!isMusicPlaying || !audioContext) return;
 
   const now = audioContext.currentTime;
-  const melody = [523.25, 523.25, 587.33, 523.25, 698.46, 659.25, 523.25, 523.25, 587.33, 523.25, 783.99, 698.46];
-  melody.forEach((note, index) => playBell(note, now + index * 0.42, 0.85));
+  const melody = [
+    523.25, 523.25, 587.33, 523.25, 698.46, 659.25,
+    523.25, 523.25, 587.33, 523.25, 783.99, 698.46,
+    523.25, 523.25, 1046.5, 880, 698.46, 659.25, 587.33,
+    932.33, 932.33, 880, 698.46, 783.99, 698.46
+  ];
 
-  musicTimer = setTimeout(playMusicLoop, 6200);
+  melody.forEach((note, index) => {
+    const start = now + index * 0.24;
+    playBell(note, start, 0.36, 0.14, index % 3 === 0 ? 'square' : 'triangle');
+    if (index % 2 === 0) playBell(note / 2, start, 0.18, 0.045, 'sine');
+  });
+
+  musicTimer = setTimeout(playMusicLoop, 6600);
 }
 
 function startMusic() {
