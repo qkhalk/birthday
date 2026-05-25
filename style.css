@@ -1,0 +1,311 @@
+:root {
+  --pink: #ff6fae;
+  --rose: #ff4d8d;
+  --cream: #fff4df;
+  --purple: #6c4dd3;
+  --dark: #27173f;
+  --white: #ffffff;
+  --shadow: 0 24px 80px rgba(39, 23, 63, 0.28);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--white);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.32), transparent 28%),
+    linear-gradient(135deg, #ff8ab8 0%, #7c5cff 52%, #25133d 100%);
+  overflow-x: hidden;
+}
+
+.app, .screen {
+  min-height: 100vh;
+}
+
+.screen {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 32px 18px;
+  text-align: center;
+}
+
+.intro-screen {
+  align-content: center;
+  gap: 14px;
+}
+
+.hidden { display: none; }
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  opacity: 0.82;
+}
+
+h1, h2 {
+  margin: 0;
+  line-height: 1.05;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+}
+
+h1 { font-size: clamp(2.6rem, 11vw, 6.4rem); }
+h2 { font-size: clamp(2rem, 8vw, 4.4rem); color: var(--dark); text-shadow: none; }
+
+.hint {
+  margin: 0 0 18px;
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  opacity: 0.9;
+}
+
+.gift-area {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(82vw, 360px);
+  height: 320px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gift-area:focus-visible, .secondary-btn:focus-visible {
+  outline: 4px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 6px;
+}
+
+.gift {
+  position: relative;
+  width: 190px;
+  height: 175px;
+  animation: wiggle 2.3s ease-in-out infinite;
+  filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.25));
+}
+
+.gift-lid, .gift-box {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ff4d8d, #ff9dc5);
+  border-radius: 16px;
+}
+
+.gift-lid {
+  top: 15px;
+  width: 220px;
+  height: 54px;
+  z-index: 3;
+}
+
+.gift-box {
+  bottom: 0;
+  width: 190px;
+  height: 126px;
+  z-index: 1;
+}
+
+.gift-ribbon {
+  position: absolute;
+  z-index: 4;
+  background: #ffe66d;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.25);
+}
+
+.gift-ribbon.vertical {
+  left: 50%;
+  top: 15px;
+  width: 34px;
+  height: 160px;
+  transform: translateX(-50%);
+}
+
+.gift-ribbon.horizontal {
+  left: -15px;
+  top: 78px;
+  width: 220px;
+  height: 30px;
+}
+
+.cake {
+  position: absolute;
+  right: 12px;
+  bottom: 18px;
+  width: 112px;
+  height: 105px;
+  transform: rotate(7deg);
+}
+
+.cake-base, .cake-top {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 18px;
+}
+
+.cake-base {
+  bottom: 0;
+  width: 112px;
+  height: 54px;
+  background: linear-gradient(#ffd1dc, #ff8bb5);
+}
+
+.cake-top {
+  bottom: 44px;
+  width: 98px;
+  height: 28px;
+  background: var(--cream);
+}
+
+.candle {
+  position: absolute;
+  left: 50%;
+  bottom: 70px;
+  width: 12px;
+  height: 34px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(45deg, #fff, #fff 5px, #7c5cff 5px, #7c5cff 10px);
+  border-radius: 8px;
+}
+
+.candle span {
+  position: absolute;
+  left: 50%;
+  top: -18px;
+  width: 14px;
+  height: 18px;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 45% 45%;
+  background: #ffd452;
+  box-shadow: 0 0 18px #ffd452;
+  animation: flame 0.9s ease-in-out infinite alternate;
+}
+
+.card {
+  width: min(92vw, 620px);
+  padding: clamp(22px, 6vw, 44px);
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--dark);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  animation: popIn 0.8s cubic-bezier(.2, .9, .2, 1.2) both;
+}
+
+.photo-frame {
+  width: min(72vw, 340px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 24px;
+  padding: 10px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff9dc5, #ffe66d, #9e8cff);
+  box-shadow: 0 16px 40px rgba(39, 23, 63, 0.22);
+}
+
+.photo-frame img, .photo-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  object-fit: cover;
+  background: #fff4f8;
+}
+
+.photo-placeholder {
+  display: none;
+  place-items: center;
+  color: rgba(39, 23, 63, 0.55);
+  font-weight: 700;
+}
+
+.wish {
+  margin: 18px auto 28px;
+  max-width: 520px;
+  font-size: clamp(1.05rem, 3.6vw, 1.28rem);
+  line-height: 1.75;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.secondary-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 22px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--rose), var(--purple));
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(108, 77, 211, 0.28);
+}
+
+.secondary-btn.soft {
+  color: var(--dark);
+  background: linear-gradient(135deg, #fff4df, #ffffff);
+}
+
+.stars::before, .stars::after {
+  content: "✦ ✧ ✦ ✧ ✦";
+  position: fixed;
+  left: 8%;
+  top: 12%;
+  font-size: 32px;
+  opacity: 0.42;
+  animation: float 5s ease-in-out infinite;
+}
+
+.stars::after {
+  left: auto;
+  right: 8%;
+  top: 66%;
+  animation-delay: -2s;
+}
+
+.confetti-piece {
+  position: fixed;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  border-radius: 3px;
+  animation: fall linear forwards;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  18% { transform: rotate(-4deg) translateY(-4px); }
+  36% { transform: rotate(4deg) translateY(0); }
+  54% { transform: rotate(-2deg) translateY(-2px); }
+  72% { transform: rotate(2deg) translateY(0); }
+}
+
+@keyframes flame {
+  from { transform: translateX(-50%) scale(0.88) rotate(-5deg); }
+  to { transform: translateX(-50%) scale(1.08) rotate(5deg); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.92); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0.8; }
+}
+
+@media (max-width: 520px) {
+  .gift-area { height: 280px; }
+  .cake { right: -2px; transform: scale(0.86) rotate(7deg); }
+}

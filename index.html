@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday 🎂</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section id="intro" class="screen intro-screen">
+      <div class="stars" aria-hidden="true"></div>
+      <p class="eyebrow">A little surprise for you</p>
+      <h1>Chúc mừng sinh nhật 🎉</h1>
+      <p class="hint">Chạm vào hộp quà để mở điều bất ngờ</p>
+
+      <button id="giftButton" class="gift-area" aria-label="Mở hộp quà sinh nhật">
+        <div class="gift">
+          <div class="gift-lid"></div>
+          <div class="gift-box"></div>
+          <div class="gift-ribbon vertical"></div>
+          <div class="gift-ribbon horizontal"></div>
+        </div>
+        <div class="cake" aria-hidden="true">
+          <div class="candle"><span></span></div>
+          <div class="cake-top"></div>
+          <div class="cake-base"></div>
+        </div>
+      </button>
+    </section>
+
+    <section id="reveal" class="screen reveal-screen hidden">
+      <div id="confetti" class="confetti" aria-hidden="true"></div>
+      <div class="card">
+        <div class="photo-frame">
+          <img src="assets/person.jpg" alt="Ảnh sinh nhật" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <div class="photo-placeholder">Ảnh sẽ đặt ở đây</div>
+        </div>
+        <p class="eyebrow">Happy Birthday</p>
+        <h2 id="personName">Nguyễn Nhật Băng</h2>
+        <p id="birthdayWish" class="wish">
+          Chúc bạn luôn xinh đẹp, học giỏi, và luôn thành công nhéeee. Happy Birthday 🎂
+        </p>
+        <div class="actions">
+          <button id="musicButton" class="secondary-btn soft">Tạm dừng nhạc ♫</button>
+          <button id="againButton" class="secondary-btn">Xem lại điều bất ngờ ✨</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
