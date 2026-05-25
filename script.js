@@ -6,7 +6,7 @@ const musicButton = document.getElementById('musicButton');
 const confetti = document.getElementById('confetti');
 
 const colors = ['#ff4d8d', '#ffe66d', '#7c5cff', '#7cf7ff', '#ffffff'];
-const music = new Audio('assets/music.mp3');
+const music = new Audio('assets/Ba_i_Ha_t_Chu_c_Mu_ng_Sinh_Nha_t_Tie_ng_Vie_t_Nha_c_Chu_c_Mu.mp3');
 music.loop = true;
 let isMusicPlaying = false;
 
